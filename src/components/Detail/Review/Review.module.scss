@@ -1,0 +1,38 @@
+.body {
+  $l-space: 24px;
+  $m-space: 16px;
+  $s-space: 12px;
+  h1,
+  h2 {
+    margin-top: $l-space;
+  }
+
+  h3,
+  h4 {
+    margin-top: $m-space;
+  }
+
+  img {
+    width: 100%;
+    margin-top: $m-space;
+    margin-bottom: $s-space;
+  }
+
+  p {
+    margin: $m-space 0;
+  }
+
+  ul {
+    padding-left: $m-space;
+    margin-top: $s-space;
+  }
+}
+
+.mask {
+  position: absolute;
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), #fff);
+  bottom: 52px;
+  height: 100px;
+  left: 0;
+  width: 100%;
+}

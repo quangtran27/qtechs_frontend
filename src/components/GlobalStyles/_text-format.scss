@@ -1,0 +1,51 @@
+// Font sizes
+.text-body {
+  font-size: 16px;
+  line-height: 160%;
+}
+.text-ui {
+  font-size: 14px;
+  line-height: 140%;
+  &-sm {
+    font-size: 12px;
+    line-height: 130%;
+  }
+}
+.text-label {
+  font-size: 12px;
+  line-height: 100%;
+}
+
+// Font weights
+.fw-semibold {
+  font-weight: 600;
+}
+.bold {
+  font-weight: 700;
+}
+
+.extra-bold {
+  font-weight: 800;
+}
+
+// Layout
+.text-center {
+  text-align: center;
+}
+
+// Line claim
+.line-clamp-2 {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  overflow: hidden;
+}
+
+// Text formatters
+.text-underline {
+  text-decoration: underline;
+}
+
+.text-linethrough {
+  text-decoration: line-through;
+}

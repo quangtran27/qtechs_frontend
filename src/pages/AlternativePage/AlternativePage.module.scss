@@ -1,0 +1,7 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  div {
+    width: var(--default-width);
+  }
+}

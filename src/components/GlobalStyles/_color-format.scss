@@ -1,0 +1,41 @@
+// Colors
+.text-gray-20 {
+  color: $gray-20;
+}
+
+.fill-primary {
+  fill: var(--primary-color);
+}
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.fill-blue {
+  fill: #0065ee !important;
+}
+.text-blue {
+  color: #0065ee !important;
+}
+
+.fill-cyan {
+  fill: #06c1d4 !important;
+}
+.text-cyan {
+  color: #06c1d4 !important;
+}
+
+.text-gray {
+  color: #8c91a1 !important;
+}
+
+.text-green {
+  color: #1bcba1 !important;
+}
+
+.fill-green {
+  fill: #1bcba1 !important;
+}
+
+.fill-purple {
+  fill: #7d4eec !important;
+}

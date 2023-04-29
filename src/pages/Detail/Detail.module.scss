@@ -1,0 +1,33 @@
+.container {
+  width: 100%;
+  max-width: var(--default-width);
+  margin: 0 auto;
+
+  $main-width: 670px;
+  $aside-width: 450px;
+
+  .main {
+    width: var(--detail-main-width);
+    margin-right: var(--detail-main-space);
+  }
+
+  .aside {
+    border-radius: 16px;
+    position: -webkit-sticky;
+    position: sticky;
+    inset: 0;
+    height: 100%;
+    flex-shrink: 0;
+    margin-left: var(--t-aside-space);
+    min-width: var(--t-aside-width);
+    transition: top 0.2s ease-in-out;
+    width: calc(100% - var(--detail-main-width) - var(--detail-main-space));
+  }
+}
+
+.section {
+  background-color: var(--white-color);
+  border-radius: 16px;
+  box-shadow: 0px 0px 12px rgb(0 0 0 / 6%);
+  padding: 24px;
+}

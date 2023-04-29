@@ -1,0 +1,47 @@
+.wrapper {
+  background-color: var(--white-color);
+  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 3%);
+  height: var(--nav-height);
+  padding: 4px 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: calc(var(--header-height));
+  transition: all 0.3s ease-in;
+  z-index: 11;
+}
+
+.container {
+  display: flex;
+  margin: 0 auto;
+  width: var(--default-width);
+}
+.swiper-slide {
+  button {
+    height: 100%;
+    padding: 0 8px 0 4px;
+    img {
+      width: var(--nav-image-size);
+      height: var(--nav-image-size);
+    }
+  }
+
+  &.swiper-slide-active button {
+    background-color: #ebf3ff;
+    fill: var(--white-color);
+
+    &:hover {
+      background-color: #ecf0f4;
+    }
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.active {
+  button {
+    background-color: #ecf0f4;
+  }
+}

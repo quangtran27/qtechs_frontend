@@ -1,0 +1,30 @@
+.bg-light-gray {
+  background-color: #f8fafc !important;
+}
+
+.bg-light-blue {
+  background-color: $light-blue !important;
+}
+
+.hover-light-blue {
+  &:hover {
+    background-color: #003bae !important;
+  }
+}
+
+.bg-tint-yellow {
+  background-color: #fff8f2 !important;
+}
+
+.bg-tint-green {
+  background-color: #edfae3 !important;
+}
+
+.bg-tint-soft-orange {
+  background-color: #fff8f2 !important;
+}
+
+// Background
+.bg-primary-hover {
+  background-color: var(--primary-hover-color);
+}

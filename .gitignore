@@ -1,0 +1,26 @@
+# Ignore build output
+build/
+
+# Ignore node modules
+node_modules/
+
+# Ignore environment variables
+.env*
+
+# Ignore log files
+*.log
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore typescript configuration files
+tsconfig.json
+tsconfig.*.json
+
+# Ignore javascript configuration files
+jsconfig.json
+
+# Ignore yarn lock file
+yarn.lock
+
+# Ignore any other files or directories specific to your project that you don't want to include in version control
