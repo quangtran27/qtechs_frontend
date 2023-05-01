@@ -30,13 +30,9 @@ export default function Review({ title, shortDescription, body }: ReviewProps) {
             <HTMLContent html={body} />
           </div>
         </Collapse>
-        <div
-          onClick={() => setIsExpanded(!isExpanded)}
-          aria-expanded={isExpanded}
-          className='position-relative'
-        >
+        <div onClick={() => setIsExpanded(!isExpanded)} aria-expanded={isExpanded} className='position-relative'>
           <div className={cx('mask')}></div>
-          <Button className='w-100 rounded-3 text-blue fw-bold bg-light-gray' large>
+          <Button className='w-100 rounded-3 text-blue fw-bold bg-light-gray' size='large'>
             <>
               {isExpanded ? (
                 <>

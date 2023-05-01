@@ -1,0 +1,43 @@
+.container {
+  width: 100%;
+  max-width: var(--default-width);
+  margin: 0 auto;
+}
+
+.content-wrapper {
+  margin-top: 24px;
+  display: flex;
+  position: relative;
+}
+
+.filter-wrapper {
+  height: 100%;
+  inset: 0;
+  margin-left: -16px;
+  margin-right: 16px;
+  overflow: hidden;
+  position: sticky;
+  top: calc(var(--header-height));
+  transition: top 0.2s linear;
+  width: var(--side-left-width);
+
+  &.down {
+    top: calc(var(--header-height) + var(--nav-height));
+  }
+}
+
+.filter-container {
+  display: flex;
+  padding: 0 16px 16px;
+  overflow-y: auto;
+  flex-direction: column;
+  max-height: calc(100vh - var(--header-height));
+
+  .down {
+    max-height: calc(100vh - var(--header-height) - var(--nav-height));
+  }
+}
+
+.filter-main {
+  margin-top: 24px;
+}

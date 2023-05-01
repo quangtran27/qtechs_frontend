@@ -21,10 +21,10 @@ import styles from './Footer.module.scss'
 const cx = classNames.bind(styles)
 export default function Footer() {
   return (
-    <footer className='py-4 mt-3'>
+    <footer className='py-4 bg-light'>
       <div className={cx('wrapper')}>
         <div className='row'>
-          <div className='d-flex bg-white shadow-sm'>
+          <div className='col-sm-12 d-flex bg-white shadow-sm'>
             <div className='p-4 m-2 col-lg-8'>
               <div className='border-bottom pb-4'>
                 <p className='fs-3 fw-bolder'>Tự tin mua sắm cùng QTechs</p>

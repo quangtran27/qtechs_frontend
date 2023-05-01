@@ -149,7 +149,7 @@ function RegisterForm({ onSubmit }: SignUpFormProps) {
         {<div className='ms-3 mt-1 text-danger'>{errors.address?.message}</div>}
       </div>
       <div className='d-flex justify-content-center mt-3 mb-3'>
-        <Button primary style={{ width: '100%', height: 40 }} type='submit'>
+        <Button variant='primary' style={{ width: '100%', height: 40 }} type='submit'>
           Đăng ký
         </Button>
       </div>

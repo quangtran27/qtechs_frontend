@@ -1,10 +1,11 @@
+import { ProductImage } from '~/models/product'
 import axiosClient from './axiosClient'
 
 const productApi = {
-  // getImages: (params?: object) => {
-  //   const url = 'product/get-all'
-  //   return axiosClient.get<IAllProductsRespone>(url, params)
-  // },
+  getImages: (productId: number) => {
+    const url = `products/${productId}/images`
+    return axiosClient.get<ProductImage[]>(url)
+  },
 }
 
 export default productApi

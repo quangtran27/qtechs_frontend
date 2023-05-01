@@ -8,7 +8,7 @@ export default function AlternativePage() {
         <p className='fs-4 fw-bold'>Tính năng này đang được phát triển</p>
         <div className='d-flex justify-content-center'>
           <Link to='/'>
-            <Button primary large style={{ fontSize: 17 }}>
+            <Button variant='primary' size='large' style={{ fontSize: 17 }}>
               Về trang chủ
             </Button>
           </Link>

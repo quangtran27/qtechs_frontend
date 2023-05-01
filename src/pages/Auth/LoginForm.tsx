@@ -59,7 +59,7 @@ export default function LoginForm({ userLogin, onSubmit }: SignInFormProps) {
         </Link>
       </div>
       <div className='d-flex justify-content-center'>
-        <Button primary style={{ width: '100%', height: 40 }} type='submit'>
+        <Button variant='primary' style={{ width: '100%', height: 40 }} type='submit'>
           Đăng nhập
         </Button>
       </div>

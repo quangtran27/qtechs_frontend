@@ -1,11 +1,6 @@
-import classNames from 'classnames/bind'
+import Button from '~/components/Button'
 import { StarIcon } from '~/components/Icon'
 import { CommentDots } from '~/components/Icon/CommentDots'
-import Button from '~/components/Button'
-
-import styles from './RatingComment.module.scss'
-
-const cx = classNames.bind(styles)
 
 export default function RatingComment() {
   return (
@@ -19,10 +14,7 @@ export default function RatingComment() {
           <span>Chưa có đánh giá và nhận xét</span>
           <span>Nên mua hay không? Hãy giúp anh em bạn nhé</span>
         </div>
-        <Button
-          large
-          className='bg-light-blue hover-light-blue text-white rounded-3 mt-3 fw-semibold w-50'
-        >
+        <Button size='large' variant='secondary' className='rounded-3 mt-3 fw-semibold w-50'>
           <div className='d-flex'>
             <StarIcon />
             <span className='ms-2'>Đánh giá</span>

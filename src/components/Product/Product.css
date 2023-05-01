@@ -1,0 +1,7 @@
+.product .swiper-slide.swiper-slide-active {
+  opacity: 1;
+}
+
+.swiper-slide {
+  width: unset;
+}

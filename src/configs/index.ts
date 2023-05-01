@@ -1,7 +1,7 @@
 import routes from './routes'
 
 const configs = {
-    routes: routes,
+  routes: routes,
 }
 
 export default configs

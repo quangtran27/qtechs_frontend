@@ -1,4 +1,4 @@
-import { FreeMode, Navigation as SwiperNavigation } from 'swiper'
+import { Navigation as SwiperNavigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import classNames from 'classnames/bind'
 
@@ -7,55 +7,33 @@ import Button from '~/components/Button'
 import styles from './Navigation.module.scss'
 import Image from '~/components/Image'
 import { NavLink } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const cx = classNames.bind(styles)
 
 function Navigation() {
-  // Automatically hide navigation when scroll down
-  // const [scrollDir, setScrollDir] = useState<'up' | 'down'>('down')
-  // useEffect(() => {
-  //   const threshold = 0
-  //   let lastScrollY = window.pageYOffset
-  //   let ticking = false
-  //   const updateScrollDir = () => {
-  //     const scrollY = window.pageYOffset
-  //     if (Math.abs(scrollY - lastScrollY) < threshold) {
-  //       ticking = false
-  //       return
-  //     }
-  //     setScrollDir(scrollY > lastScrollY ? 'down' : 'up')
-  //     lastScrollY = scrollY > 0 ? scrollY : 0
-  //     ticking = false
-  //   }
-  //   const onScroll = () => {
-  //     if (!ticking) {
-  //       window.requestAnimationFrame(updateScrollDir)
-  //       ticking = true
-  //     }
-  //   }
-  //   window.addEventListener('scroll', onScroll)
-  //   return () => window.removeEventListener('scroll', onScroll)
-  // }, [scrollDir])
-  // -----
+  useEffect(() => {
+    const swiperWrapper = document.querySelector(`.${cx('container')} .swiper-wrapper`)
+    if (swiperWrapper != null) {
+      swiperWrapper.setAttribute('style', 'display: flex')
+    }
+  }, [])
 
   return (
     // Element in navigation is hard code
     <nav className={`main-navigation ${cx('wrapper')}`}>
       <div className={cx('container')}>
         <Swiper
-          direction='horizontal'
-          initialSlide={7}
-          modules={[FreeMode, SwiperNavigation]}
+          modules={[SwiperNavigation]}
           navigation={{
             nextEl: `.${cx('wrapper')} .${cx('prev-btn')}`,
             prevEl: `.${cx('wrapper')} .${cx('next-btn')}`,
             disabledClass: `${cx('disabled')}`,
           }}
           slidesPerView={'auto'}
-          slidesPerGroup={7}
           spaceBetween={8}
         >
-          <SwiperSlide className={cx('swiper-slide')} style={{ width: 'unset' }}>
+          <SwiperSlide className={cx('swiper-slide')}>
             <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to='/laptop'>
               <Button>
                 <Image src={require('~/assets/images/categories/laptop.png')} alt='laptop' />
@@ -63,7 +41,7 @@ function Navigation() {
               </Button>
             </NavLink>
           </SwiperSlide>
-          <SwiperSlide className={cx('swiper-slide')} style={{ width: 'unset' }}>
+          <SwiperSlide className={cx('swiper-slide')}>
             <NavLink to='/sound' className={({ isActive }) => (isActive ? cx('active') : '')}>
               <Button>
                 <Image src={require('~/assets/images/categories/sound.png')} alt='sound' />
@@ -71,7 +49,7 @@ function Navigation() {
               </Button>
             </NavLink>
           </SwiperSlide>
-          <SwiperSlide className={cx('swiper-slide')} style={{ width: 'unset' }}>
+          <SwiperSlide className={cx('swiper-slide')}>
             <NavLink to='/keyboard' className={({ isActive }) => (isActive ? cx('active') : '')}>
               <Button>
                 <Image src={require('~/assets/images/categories/keyboard.png')} alt='keyboard' />
@@ -79,7 +57,7 @@ function Navigation() {
               </Button>
             </NavLink>
           </SwiperSlide>
-          <SwiperSlide className={cx('swiper-slide')} style={{ width: 'unset' }}>
+          <SwiperSlide className={cx('swiper-slide')}>
             <NavLink to='/table' className={({ isActive }) => (isActive ? cx('active') : '')}>
               <Button>
                 <Image src={require('~/assets/images/categories/table.png')} alt='table' />
@@ -87,7 +65,7 @@ function Navigation() {
               </Button>
             </NavLink>
           </SwiperSlide>
-          <SwiperSlide className={cx('swiper-slide')} style={{ width: 'unset' }}>
+          <SwiperSlide className={cx('swiper-slide')}>
             <NavLink to='/balo' className={({ isActive }) => (isActive ? cx('active') : '')}>
               <Button>
                 <Image src={require('~/assets/images/categories/balo.png')} alt='balo' />
@@ -96,7 +74,7 @@ function Navigation() {
             </NavLink>
           </SwiperSlide>
         </Swiper>
-        <div className='d-flex flex-1 ai-center pl-32'>
+        <div className='d-flex flex-1 align-items-center justify-content-end pe-4'>
           <Button circle className={cx('next-btn', 'btn-control')}>
             <AngleLeftIcon />
           </Button>

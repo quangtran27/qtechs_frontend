@@ -40,19 +40,36 @@
     height: 52px;
     min-width: 200px;
     padding: 12px;
+    font-size: 16px;
+    font-weight: 800;
   }
   &.lightActive {
     background-color: #ebf3ff !important;
   }
+
+  // Variants
   &.primary {
     background-color: var(--primary-color);
     color: var(--white-color);
-    font-size: 14px;
-    font-weight: 900;
     &:hover {
       background-color: var(--primary-hover-color) !important;
     }
   }
+  &.secondary {
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    &:hover {
+      background-color: var(--secondary-hover-color) !important;
+    }
+  }
+  &.gray {
+    background-color: var(--gray-hover-color);
+    color: var(--text-color);
+    &:hover {
+      background-color: #e7e9eb !important;
+    }
+  }
+
   &.rounded {
     border-radius: 999px;
   }

@@ -13,13 +13,12 @@ type ButtonProps = {
   disabled?: boolean
   fill?: string
   height?: string | number
-  large?: boolean
   lightActive?: boolean
-  primary?: boolean
   rounded?: boolean
-  small?: boolean
   style?: object
+  size?: 'small' | 'medium' | 'large'
   type?: 'button' | 'submit' | 'reset'
+  variant?: 'primary' | 'secondary' | 'gray' | ''
   width?: string | number
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void
 }
@@ -33,13 +32,12 @@ function Button({
   disabled,
   fill,
   height,
-  large,
   lightActive,
-  primary,
   rounded,
-  small,
   style,
+  size,
   type = 'button',
+  variant = '',
   width,
   onClick,
 }: ButtonProps) {
@@ -49,15 +47,12 @@ function Button({
     }
   }
 
-  const classes = cx('wrapper', {
+  const classes = cx('wrapper', variant, size, {
     active,
     border,
     circle,
     disabled,
-    large,
     lightActive,
-    primary,
-    small,
     rounded,
     [className]: className,
   })

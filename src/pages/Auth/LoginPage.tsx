@@ -32,7 +32,7 @@ export default function LoginPage() {
   const handleSubmit = async (_userLogin: UserLogin) => {
     try {
       setError('')
-      const loginReponse: LoginResponse = JSON.parse(JSON.stringify(await userApi.login(_userLogin)))
+      const loginReponse: LoginResponse = (await userApi.login(_userLogin)).data
       signIn({
         token: loginReponse.accessToken,
         expiresIn: 3600,
@@ -46,7 +46,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className='position-fixed bg-secondary w-100 h-100'>
+    <div className='position-fixed bg-light w-100 h-100'>
       <div className={cx('wrapper')}>
         <div className={`flex-1 ${cx('scroll')}`}>
           <div>

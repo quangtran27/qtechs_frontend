@@ -14,7 +14,7 @@ export default function RegisterPage() {
   const navigate = useNavigate()
   const handleSubmit = async (user: User) => {
     try {
-      const registeredUser: User = JSON.parse(JSON.stringify(await userApi.register(user)))
+      const registeredUser: User = (await userApi.register(user)).data
       navigate('/login', {
         state: { user: registeredUser, message: 'Đăng ký thành công' },
       })
@@ -24,7 +24,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className='position-fixed bg-secondary w-100 h-100'>
+    <div className='position-fixed bg-light w-100 h-100'>
       <div className={cx('wrapper')} style={{ height: '90%', marginTop: '2%' }}>
         <div className={`flex-1 ${cx('scroll')}`}>
           <div>

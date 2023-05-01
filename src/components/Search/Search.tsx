@@ -15,12 +15,7 @@ type SearchProps = {
   title?: string
 }
 
-function Search({
-  title = 'Type to search',
-  style,
-  searchResult = false,
-  border = false,
-}: SearchProps) {
+function Search({ title = 'Type to search', style, searchResult = false, border = false }: SearchProps) {
   return (
     <div
       className={cx('wrapper', {
@@ -33,12 +28,7 @@ function Search({
           <SearchIcon />
         </button>
         <input placeholder={title} spellCheck='false' type='search' />
-        <Button
-          className={`ms-2 text-ui fw-bold ${cx('btn')}`}
-          primary
-          rounded
-          height='32'
-        >
+        <Button className={`ms-2 text-ui fw-bold ${cx('btn')}`} variant='primary' rounded height='32'>
           Tìm kiếm
         </Button>
       </div>
@@ -46,30 +36,10 @@ function Search({
         <div className={cx('search-result-wrapper')}>
           <div className='extra-bold text-label mt-8 mb-12'>SẢN PHẨM (0)</div>
           <div className={cx('search-results')}>
-            <ProductItem
-              to='/product'
-              title='Balo Laptop Lenovo 15.6"'
-              price='199.000'
-              highlight={[0]}
-            />
-            <ProductItem
-              to='/product'
-              title='Balo Laptop Lenovo 15.6"'
-              price='1.999.000'
-              highlight={[0]}
-            />
-            <ProductItem
-              to='/product'
-              title='Balo Acer Predator SUV'
-              price='1.700.000'
-              highlight={[0]}
-            />
-            <ProductItem
-              to='/product'
-              title='Balo Lenovo Gaming Packback'
-              price='900.000'
-              highlight={[0, 26]}
-            />
+            <ProductItem to='/product' title='Balo Laptop Lenovo 15.6"' price='199.000' highlight={[0]} />
+            <ProductItem to='/product' title='Balo Laptop Lenovo 15.6"' price='1.999.000' highlight={[0]} />
+            <ProductItem to='/product' title='Balo Acer Predator SUV' price='1.700.000' highlight={[0]} />
+            <ProductItem to='/product' title='Balo Lenovo Gaming Packback' price='900.000' highlight={[0, 26]} />
           </div>
         </div>
       )}

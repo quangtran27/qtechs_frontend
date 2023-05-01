@@ -20,21 +20,24 @@ function Header() {
           <Link to='/' className={`${cx('main-logo')} mx-4`}>
             <img src={images.logo} alt='QTechs' width='100%' height='100%' />
           </Link>
+          <Link to='/' className={`${cx('main-logo-mobile')} mx-4`}>
+            <img src={images.miniLogo} alt='QTechs' width='100%' height='100%' />
+          </Link>
           <Search title='Tên sản phẩm, nhu cầu, hãng' searchResult={true} />
         </div>
         <div className='d-flex align-items-center ms-4'>
           <Tippy arrow='false' content='Giỏ hàng' delay={[300, 200]}>
-            <Link to='/cart'>
+            <Link className={cx('cart')} to='/cart'>
               <Button className='d-flex align-items-center' height='42px' rounded>
                 <>
-                  <CartIcon className='me-2' />
+                  <CartIcon className={cx('cart-icon')} />
                   <span className='ms-1 text-body'>0</span>
                 </>
               </Button>
             </Link>
           </Tippy>
-          <Tippy arrow='false' content='Đang vận chuyển' delay={[300, 200]}>
-            <Link to='/order'>
+          <Tippy className={cx('order')} arrow='false' content='Đang vận chuyển' delay={[300, 200]}>
+            <Link className={cx('order')} to='/order'>
               <Button className='h-100 ms-3' width='42px' height='42px' circle>
                 <TruckIcon />
               </Button>

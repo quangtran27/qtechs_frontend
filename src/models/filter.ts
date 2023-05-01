@@ -1,10 +1,10 @@
-export interface IFilter {
+export interface Filter {
   id: string
   name?: string
-  choices?: IFilterChoice[]
+  choices?: FilterChoice[]
 }
 
-export interface IFilterChoice {
+export interface FilterChoice {
   display: string
   value: string
 }

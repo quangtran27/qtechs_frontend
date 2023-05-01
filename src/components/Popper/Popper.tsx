@@ -14,13 +14,7 @@ type PopperProps = {
   title?: string
 }
 
-function Popper({
-  defaultContent = <></>,
-  children,
-  closeBtn = true,
-  contentWidth = 400,
-  title,
-}: PopperProps) {
+function Popper({ defaultContent = <></>, children, closeBtn = true, contentWidth = 400, title }: PopperProps) {
   if (defaultContent === 'noti') {
     defaultContent = <DefaultNoti />
   } else if (defaultContent === 'account') {
@@ -32,7 +26,7 @@ function Popper({
       <div className={cx('header')}>
         <div className={cx('title')}>{title}</div>
         {closeBtn && (
-          <button className='d-flex ai-center close-btn'>
+          <button className='d-flex align-items-center close-btn'>
             <CloseIcon />
           </button>
         )}

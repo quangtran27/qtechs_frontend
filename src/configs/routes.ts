@@ -1,7 +1,11 @@
 const routes = {
-  // Product categories
-  detail: '/product/:configId',
+  // Auth
+  login: '/login',
+  register: '/register',
+
+  // Products
   laptop: '/laptop',
+  laptopDetail: '/laptop/:laptopId',
   sound: '/sound',
   keyboard: '/keyboard',
   table: '/table',
@@ -9,8 +13,6 @@ const routes = {
 
   account: '/account',
   cart: '/cart',
-  signin: '/login',
-  signup: '/register',
   order: '/order',
 }
 

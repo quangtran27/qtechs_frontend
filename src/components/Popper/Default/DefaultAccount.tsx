@@ -14,7 +14,7 @@ export function DefaultAccount() {
         <span className='bold text-cyan text-ui'>QTechs xin chào!</span>
         <span className='text-ui mt-1'>Hãy đăng nhập để theo dõi đơn hàng và bảo hành dễ dàng nhé</span>
         <Link to='/sign-in' className='d-flex w-100 mt-3'>
-          <Button className='w-100' primary>
+          <Button className='w-100' variant='primary'>
             Đăng nhập
           </Button>
         </Link>

@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import { publicRoutes } from './routes'
+import { Fragment } from 'react'
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
         <Routes>
           {publicRoutes.map((route, index) => {
             const Page = route.component
-            let Layout = route.layout ? route.layout : MainLayout
+            let Layout = route.layout ? route.layout : Fragment
             return (
               <Route
                 key={index}

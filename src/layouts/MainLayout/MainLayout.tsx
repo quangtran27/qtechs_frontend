@@ -10,17 +10,18 @@ const cx = classNames.bind(style)
 
 type MainLayoutProps = {
   children: ReactNode | JSX.Element
+  hasNavigation?: boolean
 }
 
-function MainLayout({ children }: MainLayoutProps) {
+function MainLayout({ children, hasNavigation = true }: MainLayoutProps) {
   return (
-    <div className='bg-secondary'>
+    <>
       <Header />
       <div className={cx('spliter')}></div>
-      <Navigation />
-      <main className='bg-white'>{children}</main>
+      {hasNavigation && <Navigation />}
+      <main className='bg-light'>{children}</main>
       <Footer />
-    </div>
+    </>
   )
 }
 

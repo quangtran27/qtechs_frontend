@@ -15,11 +15,12 @@
   // Colors
   --primary-color: #fe3464;
   --primary-hover-color: #d42a53;
+  --secondary-color: #0065ee;
+  --secondary-hover-color: #015ddf;
   --text-color: #0e0e0e;
   --white-color: #fff;
   --gray-color: #ccc;
   --blue-hover-color: #0065ee;
-  --light-blue-color: #0065ee;
   --gray-hover-color: #ecf0f4;
 
   // Sizes
@@ -28,7 +29,7 @@
   --nav-height: 60px;
   --default-width: 1160px;
   --nav-image-size: 52px;
-  --side-left-width: 332px;
+  --side-left-width: 284px;
 
   // Format
   --border-radius: 16px;
@@ -36,6 +37,11 @@
   // Page detail
   --detail-main-width: 670px;
   --detail-main-space: 40px;
+
+  @media only screen and (max-width: 767px) {
+    --header-height: 60px;
+    --header-items-height: 36px;
+  }
 }
 
 * {
@@ -47,23 +53,6 @@
 html {
   font-size: 16px;
 }
-
-// Scroll-bar
-// html *::-webkit-scrollbar {
-//   border-radius: 0;
-//   width: 6px;
-// }
-
-// html *::-webkit-scrollbar-thumb {
-//   border-radius: 4px;
-//   background-color: rgba(0, 0, 0, 0.1);
-// }
-
-// html *::-webkit-scrollbar-track {
-//   border-radius: 0;
-//   background-color: rgba(0, 0, 0, 0);
-// }
-
 body {
   color: #0e0e0e;
   font-family: 'Nunito Sans', sans-serif;

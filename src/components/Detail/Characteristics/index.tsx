@@ -1,1 +1,1 @@
-export { default } from './Characteristics'
+export * from './LaptopCharacteristics'

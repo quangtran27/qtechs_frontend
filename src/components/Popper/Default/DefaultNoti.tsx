@@ -18,7 +18,7 @@ export function DefaultNoti() {
         <span className='bold text-body mt-3'>Chưa có thông báo</span>
         <div className='mt-3 d-flex flex-column align-items-center'>
           <div className='text-ui text-center'>Hãy đăng nhập để tối đa hoá trải nghiệm trên QTechs.vn bạn nhé!</div>
-          <Button primary className='mt-3' style={{ fontWeight: 900, width: 196 }}>
+          <Button variant='primary' className='mt-3' style={{ fontWeight: 900, width: 196 }}>
             Đăng nhập
           </Button>
         </div>
