@@ -6,13 +6,12 @@ import SwiperCore, { FreeMode, Navigation, Pagination, Thumbs } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Button from '~/components/Button'
 import { AngleLeftIcon, AngleRightIcon, CameraIcon } from '~/components/Icon'
-import { ProductImage } from '~/models/product'
 import './Media.css'
 import styles from './Media.module.scss'
 const cx = classNames.bind(styles)
 
 type MediaProps = {
-  images?: ProductImage[]
+  images?: string[]
 }
 
 export default function Media({ images }: MediaProps) {
@@ -34,7 +33,7 @@ export default function Media({ images }: MediaProps) {
           >
             {images?.map((image, index) => (
               <SwiperSlide key={index} className={cx('thumb-slide')}>
-                <img className={cx('thumb-img')} src={process.env.REACT_APP_API_URL + image.image} alt='Product' />
+                <img className={cx('thumb-img')} src={process.env.REACT_APP_API_URL + image} alt='Product' />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -54,7 +53,7 @@ export default function Media({ images }: MediaProps) {
             >
               {images?.map((image, index) => (
                 <SwiperSlide key={index}>
-                  <img src={process.env.REACT_APP_API_URL + image.image} alt='Product' width={700} height={700} />
+                  <img src={process.env.REACT_APP_API_URL + image} alt='Product' width={700} height={700} />
                 </SwiperSlide>
               ))}
             </Swiper>

@@ -1,22 +1,21 @@
 import classNames from 'classnames/bind'
-import { Link } from 'react-router-dom'
+import { SetStateAction } from 'react'
 import Button from '~/components/Button'
 import { BoltLightning, BookMarkIcon, CheckIcon, StarIcon } from '~/components/Icon'
+import { ProductOption } from '~/models/product'
 import moneyFormatter from '~/utils/formatter'
 import styles from './Aside.module.scss'
-import { LaptopConfig } from '~/models/laptop'
-import { SetStateAction } from 'react'
 
 const cx = classNames.bind(styles)
 
 type AsideProps = {
   name: string
-  selected: LaptopConfig
-  configs: LaptopConfig[]
-  setSelectedConfig: (value: SetStateAction<LaptopConfig>) => void
+  selectedOption: ProductOption
+  options: ProductOption[]
+  setSelectedOption: (value: SetStateAction<ProductOption>) => void
 }
 
-export default function LaptopAside({ selected, name, configs, setSelectedConfig }: AsideProps) {
+export default function Aside({ selectedOption, name, options, setSelectedOption }: AsideProps) {
   return (
     <div className={cx('container')}>
       <div className={cx('scrollbar')}>
@@ -40,31 +39,33 @@ export default function LaptopAside({ selected, name, configs, setSelectedConfig
             <div className='d-flex flex-column pb-1 mt-2'>
               <h2 className='fw-bolder'>{name}</h2>
               <div className='mt-1 d-flex align-items-center'>
-                {selected.onSale && (
+                {selectedOption.onSale && (
                   <>
                     <span className='text-body text-primary fw-bolder' style={{ fontSize: 22 }}>
-                      {moneyFormatter.format(selected.salePrice)}
+                      {moneyFormatter.format(selectedOption.salePrice)}
                     </span>
                     <div className='ms-2' style={{ fontSize: 19 }}>
-                      <span className='text-linethrough'>{moneyFormatter.format(selected.price)}</span>
+                      <span className='text-linethrough'>{moneyFormatter.format(selectedOption.price)}</span>
                       <span className='text-primary ms-1'>
                         -
                         {Math.round(
-                          parseFloat(((selected.price - selected.salePrice) / selected.price).toFixed(2)) * 100,
+                          parseFloat(
+                            ((selectedOption.price - selectedOption.salePrice) / selectedOption.price).toFixed(2),
+                          ) * 100,
                         )}
                         %
                       </span>
                     </div>
                   </>
                 )}
-                {!selected.onSale && (
+                {!selectedOption.onSale && (
                   <span className='text-body text-primary fs-5 fw-bolder' style={{ fontSize: 22 }}>
-                    {moneyFormatter.format(selected.price)}
+                    {moneyFormatter.format(selectedOption.price)}
                   </span>
                 )}
               </div>
             </div>
-            {selected.onSale && (
+            {selectedOption.onSale && (
               <div className='bg-tint-soft-orange rounded mt-2 p-3'>
                 <ul>
                   <li className='d-flex align-items-center'>
@@ -75,7 +76,8 @@ export default function LaptopAside({ selected, name, configs, setSelectedConfig
                       <BoltLightning fill='#fff' width={12} height={12} />
                     </div>
                     <div className='text-ui ms-2'>
-                      Giảm giá {moneyFormatter.format(selected.price - selected.salePrice)} trừ trực tiếp vào giá bán
+                      Giảm giá {moneyFormatter.format(selectedOption.price - selectedOption.salePrice)} trừ trực tiếp
+                      vào giá bán
                     </div>
                   </li>
                 </ul>
@@ -86,29 +88,29 @@ export default function LaptopAside({ selected, name, configs, setSelectedConfig
         <section className='mt-3'>
           <div className='fw-bolder'></div>
           <div className='mt-2 grid' style={{ '--bs-gap': '0.75rem' }}>
-            {configs.map((config) => (
+            {options.map((option) => (
               <div
-                key={config.id}
+                key={option.id}
                 style={{ cursor: 'pointer' }}
-                className={`g-col-6 p-1 rounded-3 border ${config.id === selected.id ? 'border-blue' : ''}`}
+                className={`g-col-6 p-1 rounded-3 border ${option.id === selectedOption.id ? 'border-blue' : ''}`}
                 onClick={() => {
-                  setSelectedConfig(config)
+                  setSelectedOption(option)
                 }}
               >
                 <div className='p-2'>
                   <div className='d-flex'>
-                    <div className='text-ui-sm fw-semibold divide-disc'>{config.summary}</div>
+                    <div className='text-ui-sm fw-semibold divide-disc'>{option.summary}</div>
                   </div>
 
                   <div className='mt-1'>
-                    {config.onSale && (
+                    {option.onSale && (
                       <>
-                        <div className='fw-bold text-primary'>{moneyFormatter.format(config.salePrice)}</div>
-                        <div className='text-linethrough text-ui'>{moneyFormatter.format(config.price)}</div>
+                        <div className='fw-bold text-primary'>{moneyFormatter.format(option.salePrice)}</div>
+                        <div className='text-linethrough text-ui'>{moneyFormatter.format(option.price)}</div>
                       </>
                     )}
-                    {!config.onSale && (
-                      <div className='fw-bold text-primary'>{moneyFormatter.format(config.price)}</div>
+                    {!option.onSale && (
+                      <div className='fw-bold text-primary'>{moneyFormatter.format(option.price)}</div>
                     )}
                   </div>
                 </div>
@@ -119,13 +121,13 @@ export default function LaptopAside({ selected, name, configs, setSelectedConfig
       </div>
       <div className='shadow-sm p-3'>
         <div className='mt-3'>
-          {selected.quantity > 0 && (
+          {selectedOption.quantity > 0 && (
             <Button variant='primary' size='large' className='w-100 rounded-3' style={{ fontSize: 16 }}>
               Thêm vào giỏ hàng
             </Button>
           )}
-          {selected.quantity <= 0 && (
-            <Button disabled size='large' className='w-100 rounded-3' style={{ fontSize: 16 }}>
+          {selectedOption.quantity <= 0 && (
+            <Button disabled variant='gray' size='large' className='w-100 rounded-3' style={{ fontSize: 16 }}>
               Hết hàng
             </Button>
           )}

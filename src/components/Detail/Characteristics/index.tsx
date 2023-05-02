@@ -1,1 +1,1 @@
-export * from './LaptopCharacteristics'
+export * from './Characteristics'

@@ -1,7 +1,5 @@
-import { Navigate } from 'react-router-dom'
-
 function HomePage() {
-  return <Navigate to='/laptop' />
+  return <div>Chưa có làm</div>
 }
 
 export default HomePage

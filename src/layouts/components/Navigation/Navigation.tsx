@@ -1,22 +1,30 @@
+import classNames from 'classnames/bind'
 import { Navigation as SwiperNavigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import classNames from 'classnames/bind'
 
-import { AngleLeftIcon, AngleRightIcon } from '~/components/Icon'
-import Button from '~/components/Button'
-import styles from './Navigation.module.scss'
-import Image from '~/components/Image'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useEffect } from 'react'
+import Button from '~/components/Button'
+import { AngleLeftIcon, AngleRightIcon } from '~/components/Icon'
+import Image from '~/components/Image'
+import styles from './Navigation.module.scss'
+import { Category } from '~/models/product'
+import productApi from '~/api/productApi'
 
 const cx = classNames.bind(styles)
-
 function Navigation() {
+  const [categories, setCategories] = useState<Category[]>([])
+
   useEffect(() => {
     const swiperWrapper = document.querySelector(`.${cx('container')} .swiper-wrapper`)
+    const fetchCategories = async () => {
+      setCategories((await productApi.getCategories()).data)
+    }
+
     if (swiperWrapper != null) {
       swiperWrapper.setAttribute('style', 'display: flex')
     }
+    fetchCategories()
   }, [])
 
   return (
@@ -33,46 +41,16 @@ function Navigation() {
           slidesPerView={'auto'}
           spaceBetween={8}
         >
-          <SwiperSlide className={cx('swiper-slide')}>
-            <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to='/laptop'>
-              <Button>
-                <Image src={require('~/assets/images/categories/laptop.png')} alt='laptop' />
-                <span className='text-ui fw-bold ms-2'>Laptop</span>
-              </Button>
-            </NavLink>
-          </SwiperSlide>
-          <SwiperSlide className={cx('swiper-slide')}>
-            <NavLink to='/sound' className={({ isActive }) => (isActive ? cx('active') : '')}>
-              <Button>
-                <Image src={require('~/assets/images/categories/sound.png')} alt='sound' />
-                <span className='text-ui fw-bold ms-2'>Âm thanh</span>
-              </Button>
-            </NavLink>
-          </SwiperSlide>
-          <SwiperSlide className={cx('swiper-slide')}>
-            <NavLink to='/keyboard' className={({ isActive }) => (isActive ? cx('active') : '')}>
-              <Button>
-                <Image src={require('~/assets/images/categories/keyboard.png')} alt='keyboard' />
-                <span className='text-ui fw-bold ms-2'>Bàn phím</span>
-              </Button>
-            </NavLink>
-          </SwiperSlide>
-          <SwiperSlide className={cx('swiper-slide')}>
-            <NavLink to='/table' className={({ isActive }) => (isActive ? cx('active') : '')}>
-              <Button>
-                <Image src={require('~/assets/images/categories/table.png')} alt='table' />
-                <span className='text-ui fw-bold ms-2'>Bàn nâng hạ</span>
-              </Button>
-            </NavLink>
-          </SwiperSlide>
-          <SwiperSlide className={cx('swiper-slide')}>
-            <NavLink to='/balo' className={({ isActive }) => (isActive ? cx('active') : '')}>
-              <Button>
-                <Image src={require('~/assets/images/categories/balo.png')} alt='balo' />
-                <span className='text-ui fw-bold ms-2'>Balo, Túi</span>
-              </Button>
-            </NavLink>
-          </SwiperSlide>
+          {categories.map((category) => (
+            <SwiperSlide key={category.id} className={cx('swiper-slide')}>
+              <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to={`/${category.path}`}>
+                <Button>
+                  <Image src={process.env.REACT_APP_API_URL + category.image} alt='laptop' />
+                  <span className='text-ui fw-bold ms-2'>{category.name}</span>
+                </Button>
+              </NavLink>
+            </SwiperSlide>
+          ))}
         </Swiper>
         <div className='d-flex flex-1 align-items-center justify-content-end pe-4'>
           <Button circle className={cx('next-btn', 'btn-control')}>

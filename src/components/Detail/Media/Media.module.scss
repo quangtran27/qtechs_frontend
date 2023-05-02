@@ -1,6 +1,7 @@
 .swiper-root {
   display: flex;
   height: 100%;
+  min-height: 400px;
   width: 100%;
   & > div:first-child {
     position: relative;
@@ -11,13 +12,6 @@
       width: 68px;
     }
   }
-  // svg {
-  //   display: block;
-  //   position: absolute;
-  //   top: 50%;
-  //   left: 50%;
-  //   transform: translate3d(-50%, -50%, 0);
-  // }
 }
 
 .side-right {
@@ -31,10 +25,10 @@
   border-radius: 8px;
   cursor: pointer;
   overflow: hidden;
-  padding-top: 100%;
-  position: relative;
   border: 1px solid var(--gray-hover-color);
   height: unset !important;
+  padding-top: 100%;
+  position: relative;
 
   &:not(:first-child) {
     margin-top: 8px;

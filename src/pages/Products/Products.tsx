@@ -1,53 +1,80 @@
 import classNames from 'classnames/bind'
 import { useEffect, useState } from 'react'
-
-import laptopApi from '~/api/laptopApi'
+import { useParams } from 'react-router-dom'
+import productApi from '~/api/productApi'
 import Button from '~/components/Button/Button'
+import BooleanFilter from '~/components/Filter/BooleanFilter'
 import ValueFilter from '~/components/Filter/ValueFilter'
 import { FilterIcon } from '~/components/Icon'
-import Laptop from '~/components/Laptop/Laptop'
-import { FilterChoice } from '~/models/filter'
-import { Laptop as LaptopModel } from '~/models/laptop'
-import { PAGE_SIZE, laptopCpuChoices, laptopPriceChoices, laptopRamChoices } from '~/utils/constant'
-import styles from './Laptops.module.scss'
+import Product from '~/components/Product/Product'
 import RadioChoice from '~/components/RadioChoice/RadioChoice'
+import { FilterChoice } from '~/models/filter'
+import { Product as ProductModel } from '~/models/product'
+import { PAGE_SIZE, laptopCpuChoices, laptopPriceChoices, laptopRamChoices } from '~/utils/constant'
+import styles from './Products.module.scss'
 const cx = classNames.bind(styles)
 
-export default function Laptops() {
+export default function Products() {
+  const { category } = useParams()
+  const [brandChoices, setBrandChoices] = useState<FilterChoice[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const [total, setTotal] = useState(0)
-  const [laptops, setLaptops] = useState<LaptopModel[]>([])
-  const [brandChoices, setBrandChoices] = useState<FilterChoice[]>([])
+  const [products, setProducts] = useState<ProductModel[]>([])
 
   useEffect(() => {
     const fetchBrands = async () => {
-      const brands = (await laptopApi.getAllBrands()).data
-      const choices: FilterChoice[] = brands.map((brand) => {
-        return { display: brand.name, value: brand.id.toString() }
-      })
-      setBrandChoices(choices)
+      const brands = (await productApi.getBrands()).data
+      setBrandChoices([
+        ...brands.map((brand) => {
+          return { display: brand.name, value: brand.id.toString() }
+        }),
+      ])
     }
     fetchBrands()
   }, [])
 
   useEffect(() => {
-    const fetchLaptops = async () => {
+    const fetchProducts = async () => {
       try {
-        const response = (await laptopApi.getAll({ page: currentPage, pageSize: PAGE_SIZE })).data
-
-        setLaptops((prev) => [...prev, ...response.data])
+        const response = (
+          await productApi.getAll({
+            page: 1,
+            pageSize: PAGE_SIZE,
+            category: category?.toString() || 'laptop',
+          })
+        ).data
+        setProducts(response.data)
         setTotal(response.paging.total)
+        setCurrentPage(1)
       } catch (error) {
-        console.log('Error fetching laptops')
+        console.log('Error fetching products')
       }
     }
+    fetchProducts()
+  }, [category])
 
-    fetchLaptops()
+  useEffect(() => {
+    if (currentPage > 1) {
+      const fetchMoreProducts = async () => {
+        const response = (
+          await productApi.getAll({
+            page: currentPage,
+            pageSize: PAGE_SIZE,
+            category: category?.toString() || 'laptop',
+          })
+        ).data
+        setProducts((prev) => [...prev, ...response.data])
+      }
+      fetchMoreProducts()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage])
 
   const handleExpand = () => {
     setCurrentPage((prev) => prev + 1)
   }
+
+  console.log('re-render')
 
   return (
     <div className='pb-5 bg-light-gray'>
@@ -60,8 +87,10 @@ export default function Laptops() {
                   <FilterIcon />
                   <span className='ms-2 bold'>Bộ lọc</span>
                 </div>
+                {/* Sẽ get filters của mỗi loại sản phẩm */}
                 <div className={cx('filter-main')}>
                   <ValueFilter id='price' name='Khoảng giá' choices={laptopPriceChoices} />
+                  <BooleanFilter id='promotion' name='Chỉ hiển thị ưu đãi / Khuyến mại' />
                   <ValueFilter id='brand' name='Thương hiệu' choices={brandChoices} />
                   <ValueFilter id='cpu' name='CPU' choices={laptopCpuChoices}></ValueFilter>
                   <ValueFilter id='ram' name='RAM' choices={laptopRamChoices}></ValueFilter>
@@ -85,14 +114,19 @@ export default function Laptops() {
                 </div>
               </div>
               <div className='grid'>
-                {laptops &&
-                  laptops.map((laptop) => (
-                    <div key={laptop.id} className='g-col-4'>
-                      <Laptop key={laptop.id} laptop={laptop} />
+                {products &&
+                  products.map((product) => (
+                    <div key={product.id} className='g-col-4'>
+                      <Product {...product} />
                     </div>
                   ))}
               </div>
-              {laptops.length < total && (
+              {products.length === 0 && (
+                <div className='w-100 h-100 d-flex justify-content-center align-items-center fs-5 fw-bold'>
+                  Không có sản phẩm
+                </div>
+              )}
+              {products.length < total && (
                 <div className='d-flex justify-content-center mt-4'>
                   <Button
                     onClick={() => {
