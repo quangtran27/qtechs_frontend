@@ -1,22 +1,27 @@
 import classNames from 'classnames/bind'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import userApi from '~/api/userApi'
 import Button from '~/components/Button'
 import { User } from '~/models/user'
 import styles from './Auth.module.scss'
 import RegisterForm from './RegisterForm'
+import { checkAuth } from '~/utils/auth'
 
 const cx = classNames.bind(styles)
 
 export default function RegisterPage() {
-  const [error, setError] = useState('')
   const navigate = useNavigate()
+  useEffect(() => {
+    if (checkAuth()) navigate('/')
+  }, [navigate])
+
+  const [error, setError] = useState('')
   const handleSubmit = async (user: User) => {
     try {
-      const registeredUser: User = (await userApi.register(user)).data
+      const response = await userApi.register(user)
       navigate('/login', {
-        state: { user: registeredUser, message: 'Đăng ký thành công' },
+        state: { user: response.data, message: 'Đăng ký thành công' },
       })
     } catch (error) {
       setError('Đăng ký không thành công...')
@@ -40,7 +45,7 @@ export default function RegisterPage() {
             <div className='my-3'>
               <div className='text-center'>
                 Đã có tài khoản?{' '}
-                <Link to='/sign-in' className='text-blue text-ui fw-bold text-underline'>
+                <Link to='/login' className='text-blue text-ui fw-bold text-underline'>
                   Đăng nhập
                 </Link>{' '}
                 ngay

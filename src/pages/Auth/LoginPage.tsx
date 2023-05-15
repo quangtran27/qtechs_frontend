@@ -1,44 +1,30 @@
 import classNames from 'classnames/bind'
 import { useEffect, useState } from 'react'
-import { useSignIn } from 'react-auth-kit'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import userApi from '~/api/userApi'
 import Button from '~/components/Button'
-import { LoginResponse, UserLogin } from '~/models/user'
+import { LoginResponse, UserLogin, emptyUserLogin } from '~/models/user'
 import styles from './Auth.module.scss'
 import LoginForm from './LoginForm'
+import { checkAuth } from '~/utils/auth'
 
 const cx = classNames.bind(styles)
 
-const emptyUserLogin: UserLogin = {
-  phone: '',
-  password: '',
-}
-
 export default function LoginPage() {
   const navigate = useNavigate()
-
   useEffect(() => {
-    // Check if user logged
-    if (Boolean(localStorage.getItem('access_token'))) {
-      navigate('/')
-    }
+    if (checkAuth()) navigate('/')
   }, [navigate])
 
   const { state } = useLocation()
   const [error, setError] = useState('')
-  const signIn = useSignIn()
 
   const handleSubmit = async (_userLogin: UserLogin) => {
     try {
       setError('')
-      const loginReponse: LoginResponse = (await userApi.login(_userLogin)).data
-      signIn({
-        token: loginReponse.accessToken,
-        expiresIn: 3600,
-        tokenType: 'Bearer',
-        authState: loginReponse.user,
-      })
+      const response: LoginResponse = (await userApi.login(_userLogin)).data
+      localStorage.setItem('accessToken', response.accessToken)
+      localStorage.setItem('userId', response.userId.toString())
       navigate('/')
     } catch (error) {
       setError('Đăng nhập không thành công, tài khoản hoặc mật khẩu chưa chính xác')

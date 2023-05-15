@@ -11,10 +11,12 @@ const userApi = {
     }
 
     const formData = new FormData()
-    formData.append('name', user.name)
+    formData.append('username', user.username)
+    formData.append('password', user.password)
+    formData.append('firstName', user.firstName)
+    formData.append('lastName', user.lastName)
     formData.append('phone', user.phone)
     formData.append('gender', user.gender.toString())
-    formData.append('password', user.password)
     formData.append('email', user.email)
     formData.append('address', user.address)
 
@@ -30,7 +32,7 @@ const userApi = {
     }
 
     const formData = new FormData()
-    formData.append('phone', userLogin.phone)
+    formData.append('username', userLogin.username)
     formData.append('password', userLogin.password)
 
     return axiosClient.post<LoginResponse>(url, formData, config)

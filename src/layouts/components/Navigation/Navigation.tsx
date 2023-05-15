@@ -1,15 +1,14 @@
 import classNames from 'classnames/bind'
-import { Navigation as SwiperNavigation } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
-
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { Navigation as SwiperNavigation } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import productApi from '~/api/productApi'
 import Button from '~/components/Button'
 import { AngleLeftIcon, AngleRightIcon } from '~/components/Icon'
 import Image from '~/components/Image'
-import styles from './Navigation.module.scss'
 import { Category } from '~/models/product'
-import productApi from '~/api/productApi'
+import styles from './Navigation.module.scss'
 
 const cx = classNames.bind(styles)
 function Navigation() {

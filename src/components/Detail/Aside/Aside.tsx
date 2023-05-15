@@ -1,8 +1,11 @@
 import classNames from 'classnames/bind'
-import { SetStateAction } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
+import cartApi from '~/api/cartApi'
 import Button from '~/components/Button'
 import { BoltLightning, BookMarkIcon, CheckIcon, StarIcon } from '~/components/Icon'
 import { ProductOption } from '~/models/product'
+import { checkAuth } from '~/utils/auth'
 import moneyFormatter from '~/utils/formatter'
 import styles from './Aside.module.scss'
 
@@ -16,6 +19,30 @@ type AsideProps = {
 }
 
 export default function Aside({ selectedOption, name, options, setSelectedOption }: AsideProps) {
+  const [isAdding, setIsAdding] = useState(false)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (isAdding) {
+      if (checkAuth()) {
+        const userId = Number(localStorage.getItem('userId'))
+        const addToCart = async () => {
+          try {
+            await cartApi.addToCart(userId, { optionId: selectedOption.id, quantity: 1 })
+            alert('Thêm vào giỏ hàng thành công')
+          } catch (error) {
+            console.log('Error when adding to cart: ', error)
+          }
+        }
+        addToCart()
+        setIsAdding(false)
+      } else {
+        setIsAdding(false)
+        navigate('/login')
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAdding, navigate])
+
   return (
     <div className={cx('container')}>
       <div className={cx('scrollbar')}>
@@ -122,7 +149,17 @@ export default function Aside({ selectedOption, name, options, setSelectedOption
       <div className='shadow-sm p-3'>
         <div className='mt-3'>
           {selectedOption.quantity > 0 && (
-            <Button variant='primary' size='large' className='w-100 rounded-3' style={{ fontSize: 16 }}>
+            <Button
+              onClick={() => {
+                if (!isAdding) {
+                  setIsAdding(true)
+                }
+              }}
+              variant='primary'
+              size='large'
+              className='w-100 rounded-3'
+              style={{ fontSize: 16 }}
+            >
               Thêm vào giỏ hàng
             </Button>
           )}

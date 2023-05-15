@@ -13,7 +13,7 @@ export function DefaultAccount() {
       <div className='d-flex flex-1 flex-column ms-2 align-items-start'>
         <span className='bold text-cyan text-ui'>QTechs xin chào!</span>
         <span className='text-ui mt-1'>Hãy đăng nhập để theo dõi đơn hàng và bảo hành dễ dàng nhé</span>
-        <Link to='/sign-in' className='d-flex w-100 mt-3'>
+        <Link to='/login' className='d-flex w-100 mt-3'>
           <Button className='w-100' variant='primary'>
             Đăng nhập
           </Button>

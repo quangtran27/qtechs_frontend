@@ -14,3 +14,7 @@ export interface ListResponse<T, ParamsT> {
   data: T[]
   paging: ParamsT
 }
+
+export interface ErrorResponse {
+  message: string
+}

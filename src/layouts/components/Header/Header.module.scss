@@ -51,6 +51,12 @@
   }
 }
 
+.active {
+  button {
+    background-color: #ecf0f4;
+  }
+}
+
 .cart {
   @media screen and (max-width: 767px) {
     & > button {

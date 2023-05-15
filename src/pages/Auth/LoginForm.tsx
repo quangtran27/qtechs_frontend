@@ -6,9 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { UserLogin } from '~/models/user'
 
 const schema = object({
-  phone: string()
-    .matches(/^(03|05|07|08|09)+([0-9]{8})\b/, 'Số điện thoại không hợp lệ')
-    .required('Vui lòng nhập số điện thoại'),
+  username: string().required('Vui lòng nhập tên tài khoản'),
   password: string().required('Vui lòng nhập mật khẩu'),
 })
 
@@ -35,13 +33,13 @@ export default function LoginForm({ userLogin, onSubmit }: SignInFormProps) {
         <div className='qt-input-group mt-3'>
           <input
             autoComplete='new-password'
-            type='tel'
+            type='text'
             className='qt-form-control'
-            placeholder='Số điện thoại'
-            {...register('phone')}
+            placeholder='Tên tài khoản'
+            {...register('username')}
           />
         </div>
-        {<div className='ms-3 mt-1 text-danger'>{errors.phone?.message}</div>}
+        {<div className='ms-3 mt-1 text-danger'>{errors.username?.message}</div>}
         <div className='qt-input-group mt-3'>
           <input
             autoComplete='new-password'

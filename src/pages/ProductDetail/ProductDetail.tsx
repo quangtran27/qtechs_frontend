@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-
 import productApi from '~/api/productApi'
-import Aside from '~/components/Detail/Asides/Aside'
+import Aside from '~/components/Detail/Aside/Aside'
+import LaptopCharacteristics from '~/components/Detail/Characteristics/Characteristics'
 import EstimatedShipping from '~/components/Detail/EstimatedShipping/EstimatedShipping'
 import Guarantee from '~/components/Detail/Guarantee/Guarantee'
 import Media from '~/components/Detail/Media/Media'
@@ -11,7 +11,6 @@ import Promotions from '~/components/Detail/Promotions/Promotions'
 import RatingComment from '~/components/Detail/RatingComment/RatingComment'
 import { Product, ProductOption, emptyOption, emptyProduct } from '~/models/product'
 import styles from './ProductDetail.module.scss'
-import LaptopCharacteristics from '~/components/Detail/Characteristics/Characteristics'
 
 const cx = classNames.bind(styles)
 
@@ -19,6 +18,7 @@ export default function ProductDetail() {
   const { category, productId } = useParams()
   const [product, setProduct] = useState<Product>(emptyProduct)
   const [selectedOption, setSelectedOption] = useState<ProductOption>(emptyOption)
+
   useEffect(() => {
     const fetchData = async () => {
       try {

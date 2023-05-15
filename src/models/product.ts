@@ -32,6 +32,7 @@ export const emptyProduct = {
 
 export interface ProductOption {
   id: number
+  name: string
   SKU: string
   onSale: boolean
   price: number
@@ -45,6 +46,7 @@ export interface ProductOption {
 }
 export const emptyOption: ProductOption = {
   id: 0,
+  name: '',
   SKU: '',
   onSale: false,
   price: 0,

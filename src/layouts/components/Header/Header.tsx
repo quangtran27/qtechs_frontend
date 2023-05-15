@@ -1,14 +1,13 @@
-import { Link } from 'react-router-dom'
-import classNames from 'classnames/bind'
 import Tippy from '@tippyjs/react'
+import classNames from 'classnames/bind'
+import { Link } from 'react-router-dom'
 import 'tippy.js/dist/tippy.css'
-import { CartIcon, TruckIcon } from '~/components/Icon'
 import images from '~/assets/images'
-import styles from './Header.module.scss'
 import Button from '~/components/Button'
-import Notification from '~/layouts/components/Notification'
+import { CartIcon, TruckIcon, UserIcon } from '~/components/Icon'
 import Search from '~/components/Search'
-import Account from '../Account'
+import styles from './Header.module.scss'
+import { NavLink } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
@@ -27,24 +26,26 @@ function Header() {
         </div>
         <div className='d-flex align-items-center ms-4'>
           <Tippy arrow='false' content='Giỏ hàng' delay={[300, 200]}>
-            <Link className={cx('cart')} to='/cart'>
-              <Button className='d-flex align-items-center' height='42px' rounded>
-                <>
-                  <CartIcon className={cx('cart-icon')} />
-                  <span className='ms-1 text-body'>0</span>
-                </>
+            <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to='/cart'>
+              <Button className='d-flex align-items-center' width='42px' height='42px' circle>
+                <CartIcon className={cx('cart-icon')} />
               </Button>
-            </Link>
+            </NavLink>
           </Tippy>
-          <Tippy className={cx('order')} arrow='false' content='Đang vận chuyển' delay={[300, 200]}>
-            <Link className={cx('order')} to='/order'>
+          <Tippy className={cx('order')} arrow='false' content='Đơn hàng' delay={[300, 200]}>
+            <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to='/order'>
               <Button className='h-100 ms-3' width='42px' height='42px' circle>
                 <TruckIcon />
               </Button>
-            </Link>
+            </NavLink>
           </Tippy>
-          <Notification />
-          <Account />
+          <Tippy className={cx('order')} arrow='false' content='Tài khoản' delay={[300, 200]}>
+            <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to='/account'>
+              <Button className='h-100 ms-3' width='42px' height='42px' circle>
+                <UserIcon />
+              </Button>
+            </NavLink>
+          </Tippy>
         </div>
       </div>
     </header>
