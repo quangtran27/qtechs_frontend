@@ -10,12 +10,12 @@ const schema = object({
   password: string().required('Vui lòng nhập mật khẩu'),
 })
 
-type SignInFormProps = {
+type LoginFormProps = {
   userLogin: UserLogin
   onSubmit: (_userLogin: UserLogin) => void
 }
 
-export default function LoginForm({ userLogin, onSubmit }: SignInFormProps) {
+export default function LoginForm({ userLogin, onSubmit }: LoginFormProps) {
   const { formState, handleSubmit, register } = useForm({
     defaultValues: { ...userLogin },
     mode: 'onSubmit',

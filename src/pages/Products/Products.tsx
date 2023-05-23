@@ -74,10 +74,8 @@ export default function Products() {
     setCurrentPage((prev) => prev + 1)
   }
 
-  console.log('re-render')
-
   return (
-    <div className='pb-5 bg-light-gray'>
+    <div className='pb-5 bg-light'>
       <div className={cx('container')}>
         <section className='d-flex flex-column'>
           <section className={cx('content-wrapper')}>

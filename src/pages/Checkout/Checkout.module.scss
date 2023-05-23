@@ -1,0 +1,43 @@
+.wrapper {
+  width: var(--default-width);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.products {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  will-change: auto;
+}
+
+.heading-icon {
+  cursor: pointer;
+  height: 16px;
+  position: relative;
+  width: 16px;
+
+  &::before,
+  &::after {
+    background-color: #333;
+    border-radius: 16px;
+    content: '';
+    height: 2px;
+    position: absolute;
+    top: 8px;
+    transition: transform 0.3s ease-in-out;
+    width: 16px;
+  }
+
+  &::before {
+    transform: rotate(90deg);
+  }
+}
+
+.heading-icon.expanded {
+  &::before {
+    transform: rotate(180deg);
+  }
+  &::after {
+    transform: rotate(90deg) scale(0);
+  }
+}

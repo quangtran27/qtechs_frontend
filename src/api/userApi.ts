@@ -1,5 +1,6 @@
 import { User, UserLogin, LoginResponse } from '~/models/user'
 import axiosClient from './axiosClient'
+import { getAuthHeader } from '~/utils/auth'
 
 const userApi = {
   register: (user: User) => {
@@ -36,6 +37,12 @@ const userApi = {
     formData.append('password', userLogin.password)
 
     return axiosClient.post<LoginResponse>(url, formData, config)
+  },
+  getInfo: (userId: number) => {
+    const url = `users/${userId}`
+    return axiosClient.get<User>(url, {
+      headers: getAuthHeader(),
+    })
   },
 }
 

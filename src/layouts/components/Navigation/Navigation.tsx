@@ -27,7 +27,6 @@ function Navigation() {
   }, [])
 
   return (
-    // Element in navigation is hard code
     <nav className={`main-navigation ${cx('wrapper')}`}>
       <div className={cx('container')}>
         <Swiper

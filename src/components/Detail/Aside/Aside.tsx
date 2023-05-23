@@ -8,6 +8,7 @@ import { ProductOption } from '~/models/product'
 import { checkAuth } from '~/utils/auth'
 import moneyFormatter from '~/utils/formatter'
 import styles from './Aside.module.scss'
+import { toast } from 'react-toastify'
 
 const cx = classNames.bind(styles)
 
@@ -28,9 +29,23 @@ export default function Aside({ selectedOption, name, options, setSelectedOption
         const addToCart = async () => {
           try {
             await cartApi.addToCart(userId, { optionId: selectedOption.id, quantity: 1 })
-            alert('Thêm vào giỏ hàng thành công')
+            toast.success('Thêm vào giỏ hàng thành công!', {
+              position: 'top-right',
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+            })
           } catch (error) {
-            console.log('Error when adding to cart: ', error)
+            toast.error('Thêm không thành công!', {
+              position: 'top-right',
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+            })
           }
         }
         addToCart()

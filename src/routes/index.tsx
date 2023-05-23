@@ -1,13 +1,12 @@
-import { Fragment } from 'react'
-import MainLayout from '~/layouts/MainLayout/MainLayout'
-
+import MainLayout from '~/layouts/MainLayout'
 import Account from '~/pages/Account'
 import LoginPage from '~/pages/Auth/LoginPage'
 import RegisterPage from '~/pages/Auth/RegisterPage'
 import Cart from '~/pages/Cart/Cart'
+import Checkout from '~/pages/Checkout'
 import HomePage from '~/pages/HomePage'
 import Order from '~/pages/Order/Order'
-import ProductDetail from '~/pages/ProductDetail/ProductDetail'
+import ProductDetail from '~/pages/ProductDetail'
 import Products from '~/pages/Products/Products'
 
 type Route = {
@@ -22,6 +21,7 @@ const publicRoutes: Route[] = [
   { path: 'register', component: RegisterPage },
   { path: 'account', component: Account },
   { path: 'cart', component: Cart, layout: MainLayout },
+  { path: 'checkout', component: Checkout, layout: MainLayout },
   { path: 'order', component: Order, layout: MainLayout },
   { path: ':category', component: Products, layout: MainLayout },
   { path: ':category/:productId', component: ProductDetail, layout: MainLayout },
