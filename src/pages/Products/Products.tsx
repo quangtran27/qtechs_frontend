@@ -12,7 +12,7 @@ import { FilterChoice } from '~/models/filter'
 import { Product as ProductModel } from '~/models/product'
 import { PAGE_SIZE, laptopCpuChoices, laptopPriceChoices, laptopRamChoices } from '~/utils/constant'
 import styles from './Products.module.scss'
-import Error from '~/pages/Error'
+import Error from '~/components/Error'
 const cx = classNames.bind(styles)
 
 export default function Products() {

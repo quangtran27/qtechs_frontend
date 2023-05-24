@@ -11,7 +11,7 @@ import Promotions from '~/components/Detail/Promotions/Promotions'
 import RatingComment from '~/components/Detail/RatingComment/RatingComment'
 import { Product, ProductOption, emptyOption, emptyProduct } from '~/models/product'
 import styles from './ProductDetail.module.scss'
-import Error from '../Error/Error'
+import Error from '../../components/Error/Error'
 
 const cx = classNames.bind(styles)
 
