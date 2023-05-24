@@ -10,15 +10,15 @@ const productApi = {
   },
   //
 
-  get: (productId: number) => {
+  get: (productId: string) => {
     const url = `products/${productId}`
     return axiosClient.get<Product>(url)
   },
-  getAll: (params: { page: number; pageSize: number; category: string }) => {
+  getAll: (params: { page: number; pageSize: number; categoryId: string }) => {
     const url = 'products'
     return axiosClient.get<ListResponse<Product, PaginationParams>>(url, { params: params })
   },
-  getCategory: (categoryId: number) => {
+  getCategory: (categoryId: string) => {
     const url = `categories/${categoryId}`
     return axiosClient.get<Category>(url)
   },

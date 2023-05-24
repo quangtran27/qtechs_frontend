@@ -26,9 +26,7 @@ export default function Cart() {
         const userId = Number(localStorage.getItem('userId'))
         const response = await cartApi.getCart(userId)
         setCart(response.data)
-      } catch (e) {
-        console.log(e)
-      }
+      } catch (e) {}
     }
 
     fetchCart()

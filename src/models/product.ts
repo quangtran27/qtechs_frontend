@@ -5,9 +5,8 @@ export interface Brand {
 }
 
 export interface Category {
-  id: number
+  id: string
   name: string
-  path: string
   image: string
 }
 
@@ -15,16 +14,16 @@ export interface Product {
   id: number
   name: string
   status: boolean
-  categoryId: number
+  categoryId: string
   brandId: number
   reviewId: number
   options: ProductOption[]
 }
-export const emptyProduct = {
+export const emptyProduct: Product = {
   id: 0,
   name: '',
   status: false,
-  categoryId: 0,
+  categoryId: '',
   brandId: 0,
   reviewId: 0,
   options: [],

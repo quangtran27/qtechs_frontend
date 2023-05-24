@@ -38,7 +38,7 @@ export default function Product({ id, name, categoryId, options }: ProductModel)
     })
   }
   return (
-    <Link to={`/${category?.path}/${id}`} className={cx('product') + ' h-100'}>
+    <Link to={`/${category?.id}/${id}`} className={cx('product') + ' h-100'}>
       <div className='flex-1 product'>
         <div className={cx('images')}>
           <Swiper

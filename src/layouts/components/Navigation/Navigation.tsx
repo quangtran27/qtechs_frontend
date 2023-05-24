@@ -41,7 +41,7 @@ function Navigation() {
         >
           {categories.map((category) => (
             <SwiperSlide key={category.id} className={cx('swiper-slide')}>
-              <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to={`/${category.path}`}>
+              <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to={`/${category.id}`}>
                 <Button>
                   <Image src={process.env.REACT_APP_API_URL + category.image} alt='laptop' />
                   <span className='text-ui fw-bold ms-2'>{category.name}</span>

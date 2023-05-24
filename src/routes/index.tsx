@@ -23,8 +23,8 @@ const publicRoutes: Route[] = [
   { path: 'cart', component: Cart, layout: MainLayout },
   { path: 'checkout', component: Checkout, layout: MainLayout },
   { path: 'order', component: Order, layout: MainLayout },
-  { path: ':category', component: Products, layout: MainLayout },
-  { path: ':category/:productId', component: ProductDetail, layout: MainLayout },
+  { path: ':categoryId', component: Products, layout: MainLayout },
+  { path: ':categoryId/:productId', component: ProductDetail, layout: MainLayout },
 ]
 
 const privateRoutes: Route[] = []
