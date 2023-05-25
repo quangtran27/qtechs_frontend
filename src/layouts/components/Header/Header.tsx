@@ -40,7 +40,7 @@ function Header() {
             </NavLink>
           </Tippy>
           <Tippy className={cx('order')} arrow='false' content='Tài khoản' delay={[300, 200]}>
-            <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to='/account'>
+            <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to='/user'>
               <Button className='h-100 ms-3' width='42px' height='42px' circle>
                 <UserIcon />
               </Button>

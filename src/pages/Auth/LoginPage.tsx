@@ -48,7 +48,7 @@ export default function LoginPage() {
             <div className='mt-3 mb-2'>
               <div className='text-center'>
                 Chưa có tài khoản?
-                <Link to='/sign-up' className='text-blue text-ui fw-bold text-underline'>
+                <Link to='/register' className='text-blue text-ui fw-bold text-underline'>
                   {' '}
                   Đăng ký
                 </Link>{' '}

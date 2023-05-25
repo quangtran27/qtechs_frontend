@@ -78,14 +78,14 @@ export default function Checkout() {
       ;(async () => {
         const user = (await userApi.getInfo(Number(userId))).data
         setCheckoutData({
-          name: `${user.firstName} ${user.lastName}`,
+          name: user.name,
           phone: user.phone,
           address: user.address,
           note: '',
           payment: OrderPayment.COD,
         })
         reset({
-          name: `${user.firstName} ${user.lastName}`,
+          name: user.name,
           phone: user.phone,
           address: user.address,
           note: '',
@@ -124,7 +124,7 @@ export default function Checkout() {
           localStorage.removeItem('selectedCartItems')
           toast.success('Đặt hàng thành công', {
             position: 'top-right',
-            autoClose: 5000,
+            autoClose: 3000,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
@@ -134,7 +134,7 @@ export default function Checkout() {
       } else {
         toast.warn('Không có sản phẩm nào trong đơn hàng', {
           position: 'top-right',
-          autoClose: 5000,
+          autoClose: 3000,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
@@ -143,7 +143,7 @@ export default function Checkout() {
     } catch (_e) {
       toast.error('Đặt hàng không thành công, vui lòng thử lại', {
         position: 'top-right',
-        autoClose: 5000,
+        autoClose: 3000,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,

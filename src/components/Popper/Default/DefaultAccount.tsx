@@ -18,7 +18,7 @@ export function DefaultAccount() {
             Đăng nhập
           </Button>
         </Link>
-        <Link to='/sign-up' className='mt-2 mb-3 hover-blue'>
+        <Link to='/register' className='mt-2 mb-3 hover-blue'>
           <span className='text-ui'>
             Chưa có tài khoản? <span className='text-blue text-ui fw-bold text-underline'>Đăng ký</span>
           </span>

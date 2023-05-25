@@ -22,3 +22,9 @@ export const getAuthHeader = (contentType: string = 'application/json') => {
   }
   return headers
 }
+
+export const logout = (): void => {
+  localStorage.removeItem('accessToken')
+  localStorage.removeItem('userId')
+  localStorage.removeItem('selectedCartItems')
+}

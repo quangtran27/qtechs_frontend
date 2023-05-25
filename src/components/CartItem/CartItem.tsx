@@ -45,7 +45,7 @@ export default function CartItem({ cartItem, isChecked = false, setCart, setSele
           const response = await cartApi.updateCartItem(userId, cartItem.id, quantity)
           toast.success('Cập nhật thành công!', {
             position: 'top-right',
-            autoClose: 5000,
+            autoClose: 3000,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
@@ -67,7 +67,7 @@ export default function CartItem({ cartItem, isChecked = false, setCart, setSele
           const e = axiosError.response?.data as ErrorResponse
           toast.error(e.message, {
             position: 'top-right',
-            autoClose: 5000,
+            autoClose: 3000,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
@@ -89,7 +89,7 @@ export default function CartItem({ cartItem, isChecked = false, setCart, setSele
           await cartApi.deleteCartItem(userId, cartItem.id, quantity)
           toast.success('Xoá sản phẩm khỏi giỏ hàng thành công!', {
             position: 'top-right',
-            autoClose: 5000,
+            autoClose: 3000,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,

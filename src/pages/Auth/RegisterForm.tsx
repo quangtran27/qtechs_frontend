@@ -14,8 +14,7 @@ const schema = object({
   username: string().required('Vui lòng nhập tên tài khoản'),
   password: string().required('Vui lòng nhập mật khẩu'),
   confirmPassword: string().oneOf([ref('password')], 'Mật khẩu không khớp'),
-  firstName: string().required('Vui lòng nhập họ'),
-  lastName: string().required('Vui lòng nhập tên'),
+  name: string().required('Vui lòng tên'),
   email: string()
     .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Email không hợp lệ')
     .required('Vui lòng nhập email'),
@@ -47,12 +46,12 @@ function RegisterForm({ onSubmit }: SignUpFormProps) {
       id: 0,
       username: data.username,
       password: data.password,
-      firstName: data.firstName,
-      lastName: data.lastName,
+      name: data.name,
       gender: data.gender, // 1: Male, 2: Female, 3: Others
       phone: data.phone,
       email: data.email,
       address: data.address,
+      image: '',
     })
   }
 
@@ -60,13 +59,9 @@ function RegisterForm({ onSubmit }: SignUpFormProps) {
     <form autoComplete='none' className='' onSubmit={handleSubmit(handleSignUp)}>
       <div>
         <div className='qt-input-group mt-3'>
-          <input type='text' placeholder='Họ' className='qt-form-control' {...register('firstName')} />
+          <input type='text' placeholder='Tên' className='qt-form-control' {...register('name')} />
         </div>
-        {<div className='ms-3 mt-1 text-danger'>{errors.firstName?.message}</div>}
-        <div className='qt-input-group mt-3'>
-          <input type='text' placeholder='Tên' className='qt-form-control' {...register('lastName')} />
-        </div>
-        {<div className='ms-3 mt-1 text-danger'>{errors.lastName?.message}</div>}
+        {<div className='ms-3 mt-1 text-danger'>{errors.name?.message}</div>}
         <div className='d-flex mt-3 ms-3'>
           {genderOptions.map((option) => (
             <div key={option.value} className='d-flex me-3'>

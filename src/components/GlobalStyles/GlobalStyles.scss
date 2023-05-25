@@ -88,6 +88,8 @@ ul,
 li {
   margin: 0;
   padding: 0;
+  list-style-type: none;
+  list-style: none;
 }
 
 h1 {
@@ -119,4 +121,10 @@ body .tippy-box {
   font-family: 'Nuntino Sans', sans-serif;
   line-height: 140%;
   font-weight: 600;
+}
+
+.wrapper {
+  width: var(--default-width);
+  max-width: 100%;
+  margin: 0 auto;
 }
