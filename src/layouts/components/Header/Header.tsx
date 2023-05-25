@@ -32,13 +32,6 @@ function Header() {
               </Button>
             </NavLink>
           </Tippy>
-          <Tippy className={cx('order')} arrow='false' content='Đơn hàng' delay={[300, 200]}>
-            <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to='/order'>
-              <Button className='h-100 ms-3' width='42px' height='42px' circle>
-                <TruckIcon />
-              </Button>
-            </NavLink>
-          </Tippy>
           <Tippy className={cx('order')} arrow='false' content='Tài khoản' delay={[300, 200]}>
             <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to='/user'>
               <Button className='h-100 ms-3' width='42px' height='42px' circle>

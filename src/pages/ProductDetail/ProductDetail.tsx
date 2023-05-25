@@ -9,7 +9,7 @@ import Guarantee from '~/components/Detail/Guarantee/Guarantee'
 import Media from '~/components/Detail/Media/Media'
 import Promotions from '~/components/Detail/Promotions/Promotions'
 import RatingComment from '~/components/Detail/RatingComment/RatingComment'
-import { Product, ProductOption, emptyOption, emptyProduct } from '~/models/product'
+import { Category, Product, ProductOption, emptyOption, emptyProduct } from '~/models/product'
 import styles from './ProductDetail.module.scss'
 import Error from '../../components/Error/Error'
 
@@ -17,8 +17,8 @@ const cx = classNames.bind(styles)
 
 export default function ProductDetail() {
   const { categoryId, productId } = useParams()
-  const [isError, setIsError] = useState(false)
-  const [product, setProduct] = useState<Product>(emptyProduct)
+  const [category, setCategory] = useState<Category | null>(null)
+  const [product, setProduct] = useState<Product | null>(null)
   const [selectedOption, setSelectedOption] = useState<ProductOption>(emptyOption)
   const navigate = useNavigate()
 
@@ -26,13 +26,11 @@ export default function ProductDetail() {
     ;(async () => {
       try {
         if (categoryId !== undefined) {
-          await productApi.getCategory(categoryId)
+          setCategory((await productApi.getCategory(categoryId)).data)
         } else {
           throw ReferenceError
         }
-      } catch (e) {
-        setIsError(true)
-      }
+      } catch (e) {}
     })()
 
     const fetchData = async () => {
@@ -40,23 +38,20 @@ export default function ProductDetail() {
         if (productId !== undefined) {
           setProduct((await productApi.get(productId)).data)
         }
-      } catch (error) {
-        setIsError(true)
-      }
+      } catch (error) {}
     }
     fetchData()
   }, [categoryId, navigate, productId])
 
   useEffect(() => {
-    if (product.options.length > 0) {
-      setSelectedOption(product.options[0])
-    }
-  }, [product.options])
+    if (product && product.options.length > 0) setSelectedOption(product.options[0])
+  }, [product, product?.options])
 
   return (
     <>
-      {isError && <Error title='Sản phẩm không tồn tại' />}
-      {!isError && (
+      {!category && <Error title='Trang bạn yêu cầu không tồn tại' />}
+      {!product && category && <Error title='Sản phẩm không tồn tại' />}
+      {product && category && (
         <div className='py-3'>
           <div className={cx('container')}>
             <div className='d-flex mt-3'>
