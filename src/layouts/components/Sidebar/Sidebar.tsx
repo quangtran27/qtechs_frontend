@@ -19,13 +19,13 @@ export default function Sidebar() {
   }, [navigate])
 
   return (
-    <Card className='col-lg-4'>
+    <Card className={`col-lg-4`}>
       <ul className={cx('sidebar-menu')}>
         <li className={cx('sidebar-menu-item')}>
           <NavLink className={({ isActive }) => (isActive ? cx('active') : '')} to='/user/order'>
             <Button size='large' className='fw-normal w-100 align-items-center justify-content-start my-2 '>
               <TruckIcon className='me-3' />
-              <span>Đơn hàng</span>
+              <span>Thông tin đơn hàng</span>
             </Button>
           </NavLink>
         </li>
@@ -51,8 +51,10 @@ export default function Sidebar() {
             size='large'
             className='fw-normal w-100 align-items-center justify-content-start mt-2 text-danger fw-bold'
             onClick={() => {
-              logout()
-              navigate('/login')
+              if (window.confirm('Bạn có muốn đăng xuất?')) {
+                logout()
+                navigate('/login')
+              }
             }}
           >
             <LogoutIcon className='me-3 ' />

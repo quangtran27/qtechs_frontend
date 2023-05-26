@@ -1,5 +1,4 @@
 import { IconProps as StarIconProps } from '.'
-import classNames from 'classnames/bind'
 
 export function StarIcon({
   className,

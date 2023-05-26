@@ -5,12 +5,20 @@ export enum OrderPayment {
   Banking = 2,
 }
 
+export const enum OrderStatus {
+  CREATED = 1,
+  PREPARING = 2,
+  DELIVERING = 3,
+  DELIVERED = 4,
+  CANCELED = 5,
+}
+
 export interface Order {
   id: number
   userId: number
   created: string
   updated: string
-  status: number
+  status: OrderStatus
   customerName: string
   customerPhone: string
   customerAddress: string
@@ -20,7 +28,7 @@ export interface Order {
   isReviewed: boolean
   note: string
   total: number
-  items: string
+  items: OrderItem[]
 }
 
 export interface OrderItem {

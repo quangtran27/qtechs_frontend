@@ -5,7 +5,7 @@ import LoginPage from '~/pages/Auth/LoginPage'
 import RegisterPage from '~/pages/Auth/RegisterPage'
 import Cart from '~/pages/Cart/Cart'
 import Checkout from '~/pages/Checkout'
-import HomePage from '~/pages/HomePage'
+import Home from '~/pages/Home/HomePage'
 import Order from '~/pages/Order'
 import ProductDetail from '~/pages/ProductDetail'
 import Products from '~/pages/Products'
@@ -19,7 +19,7 @@ type Route = {
 }
 
 const publicRoutes: Route[] = [
-  { path: '', component: HomePage, layout: MainLayout },
+  { path: '', component: Home, layout: MainLayout },
   { path: 'login', component: LoginPage },
   { path: 'register', component: RegisterPage },
   { path: 'user', component: User, layout: SidebarLayout },

@@ -1,6 +1,8 @@
 import { Order, OrderPayment } from '~/models/order'
 import axiosClient from './axiosClient'
 import { getAuthHeader } from '~/utils/auth'
+import { ListResponse } from '~/models/common'
+import { PaginationParams } from '~/models/common'
 
 const orderApi = {
   addOrder: (
@@ -25,6 +27,10 @@ const orderApi = {
     return axiosClient.post<Order>(url, formData, {
       headers: getAuthHeader(),
     })
+  },
+  getByUser: (userId: number, params: { page: number; pageSize: number }) => {
+    const url = `users/${userId}/orders`
+    return axiosClient.get<ListResponse<Order, PaginationParams>>(url, { params: params, headers: getAuthHeader() })
   },
 }
 

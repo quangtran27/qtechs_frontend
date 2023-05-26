@@ -1,13 +1,12 @@
 import Tippy from '@tippyjs/react'
 import classNames from 'classnames/bind'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import 'tippy.js/dist/tippy.css'
 import images from '~/assets/images'
 import Button from '~/components/Button'
-import { CartIcon, TruckIcon, UserIcon } from '~/components/Icon'
+import { CartIcon, UserIcon } from '~/components/Icon'
 import Search from '~/components/Search'
 import styles from './Header.module.scss'
-import { NavLink } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 

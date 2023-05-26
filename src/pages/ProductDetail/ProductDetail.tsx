@@ -9,9 +9,9 @@ import Guarantee from '~/components/Detail/Guarantee/Guarantee'
 import Media from '~/components/Detail/Media/Media'
 import Promotions from '~/components/Detail/Promotions/Promotions'
 import RatingComment from '~/components/Detail/RatingComment/RatingComment'
-import { Category, Product, ProductOption, emptyOption, emptyProduct } from '~/models/product'
-import styles from './ProductDetail.module.scss'
+import { Category, Product, ProductOption, emptyOption } from '~/models/product'
 import Error from '../../components/Error/Error'
+import styles from './ProductDetail.module.scss'
 
 const cx = classNames.bind(styles)
 

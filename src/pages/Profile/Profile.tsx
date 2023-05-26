@@ -36,7 +36,6 @@ export default function Profile() {
     handleSubmit,
     register,
     reset,
-    setValue,
   } = useForm({
     defaultValues: { ...emptyUser },
     mode: 'onSubmit',
