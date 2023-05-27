@@ -40,8 +40,8 @@ function Home() {
           modules={[Pagination]}
           className={cx('banner-swiper')}
         >
-          {banners.map((banner) => (
-            <SwiperSlide>
+          {banners.map((banner, index) => (
+            <SwiperSlide key={index}>
               <img src={process.env.REACT_APP_API_URL + banner.image} alt='' />
             </SwiperSlide>
           ))}

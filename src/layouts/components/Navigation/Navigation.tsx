@@ -16,14 +16,16 @@ function Navigation() {
 
   useEffect(() => {
     const swiperWrapper = document.querySelector(`.${cx('container')} .swiper-wrapper`)
-    const fetchCategories = async () => {
-      setCategories((await productApi.getCategories()).data)
-    }
-
     if (swiperWrapper != null) {
       swiperWrapper.setAttribute('style', 'display: flex')
     }
-    fetchCategories()
+    ;(async () => {
+      try {
+        setCategories((await productApi.getCategories()).data)
+      } catch (e) {
+        console.log(e)
+      }
+    })()
   }, [])
 
   return (
