@@ -100,7 +100,7 @@ function RegisterForm({ onSubmit }: SignUpFormProps) {
         <div className='qt-input-group mt-3'>
           <input type='email' placeholder='Email' className='qt-form-control' {...register('email')} />
         </div>
-        {<div className='ms-3 mt-1 text-danger'>{errors.address?.message}</div>}
+        {<div className='ms-3 mt-1 text-danger'>{errors.email?.message}</div>}
         <div className='qt-input-group mt-3'>
           <input type='text' placeholder='Địa chỉ' className='qt-form-control' {...register('address')} />
         </div>

@@ -7,6 +7,7 @@ import { LoginResponse, UserLogin, emptyUserLogin } from '~/models/user'
 import styles from './Auth.module.scss'
 import LoginForm from './LoginForm'
 import { checkAuth } from '~/utils/auth'
+import { toast } from 'react-toastify'
 
 const cx = classNames.bind(styles)
 
@@ -25,9 +26,22 @@ export default function LoginPage() {
       const response: LoginResponse = (await userApi.login(_userLogin)).data
       localStorage.setItem('accessToken', response.accessToken)
       localStorage.setItem('userId', response.userId.toString())
+      toast.success('Đăng nhâp thành công!', {
+        position: 'top-right',
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      })
       navigate('/')
     } catch (error) {
-      setError('Đăng nhập không thành công, tài khoản hoặc mật khẩu chưa chính xác')
+      toast.error('Đăng nhập không thành công, tài khoản hoặc mật khẩu chưa chính xác', {
+        position: 'top-right',
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      })
     }
   }
 
@@ -42,7 +56,6 @@ export default function LoginPage() {
                 QTechs
               </Link>{' '}
             </h2>
-            {state?.message && <div>{state.message}</div>}
             <LoginForm userLogin={state?.user ? state.user : emptyUserLogin} onSubmit={handleSubmit} />
             {error && <div className='text-danger mt-3 text-center px-5'>{error}</div>}
             <div className='mt-3 mb-2'>

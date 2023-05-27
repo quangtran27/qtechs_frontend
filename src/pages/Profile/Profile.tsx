@@ -60,7 +60,8 @@ export default function Profile() {
       user.phone !== _user.phone ||
       user.gender !== _user.gender ||
       user.email !== _user.email ||
-      user.address !== _user.address
+      user.address !== _user.address ||
+      image
     ) {
       if (!isUpdating) {
         try {

@@ -7,6 +7,7 @@ import { User } from '~/models/user'
 import styles from './Auth.module.scss'
 import RegisterForm from './RegisterForm'
 import { checkAuth } from '~/utils/auth'
+import { toast } from 'react-toastify'
 
 const cx = classNames.bind(styles)
 
@@ -20,8 +21,15 @@ export default function RegisterPage() {
   const handleSubmit = async (user: User) => {
     try {
       const response = await userApi.register(user)
+      toast.success('Đăng ký thành công!', {
+        position: 'top-right',
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      })
       navigate('/login', {
-        state: { user: response.data, message: 'Đăng ký thành công' },
+        state: { user: response.data },
       })
     } catch (error) {
       setError('Đăng ký không thành công...')

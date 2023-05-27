@@ -129,7 +129,7 @@ export default function Checkout() {
             pauseOnHover: true,
             draggable: true,
           })
-          navigate('/users/order')
+          navigate('/user/order')
         }
       } else {
         toast.warn('Không có sản phẩm nào trong đơn hàng', {
